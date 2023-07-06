@@ -1,0 +1,278 @@
+openapi: 3.0.3
+info:
+  title: HIS - Additional API (Requested)
+  version: 1.0.0
+  contact: {}
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/SKINGLRZ_1/testa/1.0.0
+  - url: '{{Host}}'
+paths:
+  /api/:
+    get:
+      summary: GetTodayPaymentDetail
+      description: GetTodayPaymentDetail
+      operationId: gettodaypaymentdetail
+      parameters:
+        - name: PatientKey
+          in: query
+          schema:
+            type: string
+            example: '37700'
+          description: เลขประจำตัวของคนไข้
+        - name: Id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: id ของการชำระเงิน
+      responses:
+        '200':
+          description: ''
+  /api/PostSchedule:
+    post:
+      summary: PostSchedule
+      description: PostSchedule
+      operationId: postschedule
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Date:
+                  description: วันที่จองในการรักษา
+                  type: string
+                  example: '2023-07-06'
+                Department:
+                  description: แผนก
+                  type: string
+                  example: เวชกรรม
+                Image:
+                  description: แนบภาพอาการป่วย
+                  type: string
+                  format: binary
+                PatientAdvocacy:
+                  description: สิทธิผู้ป่วย
+                  type: string
+                  example: ''
+                PatientKey:
+                  description: เลขประจำตัวของคนไข้
+                  type: string
+                  example: '37700'
+                Symptom:
+                  description: อาการ
+                  type: string
+                  example: '1'
+                Time:
+                  description: เวลาที่จองในการรักษา
+                  type: string
+                  example: '15:00'
+                Type:
+                  description: จองคิวให้ตนเอง, จองคิวให้คนอื่น
+                  type: string
+                  example: จองคิวให้ตนเอง
+      responses:
+        '200':
+          description: ''
+  /api/PostRegister:
+    post:
+      summary: PostRegister
+      description: PostRegister
+      operationId: postregister
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                AddressNo:
+                  description: เลขที่บ้าน
+                  type: string
+                  example: '12'
+                BirthDate:
+                  description: วันเกิด
+                  type: string
+                  example: '1974-08-19'
+                Cid:
+                  description: เลขบัตรประชาชน
+                  type: string
+                  example: '1234567890000'
+                DistrictName:
+                  description: อำเภอ
+                  type: string
+                  example: สายไหม
+                Email:
+                  description: อีเมล์
+                  type: string
+                  example: softcon@gmail.com
+                FirstName:
+                  description: ชื่อ
+                  type: string
+                  example: ซอฟต์
+                LastName:
+                  description: นามสกุล
+                  type: string
+                  example: คอน
+                Moo:
+                  description: หมู่
+                  type: string
+                  example: '1'
+                PatientKey:
+                  description: เลขประจำตัวของคนไข้
+                  type: string
+                  example: '37700'
+                PhoneNumber:
+                  description: หมายเลขโทรศัพท์
+                  type: string
+                  example: '0123456789'
+                ProvinceName:
+                  description: จังหวัด
+                  type: string
+                  example: กรุงเทพมหานคร
+                Road:
+                  description: ถนน
+                  type: string
+                  example: '1'
+                Sex:
+                  description: เพศ
+                  type: string
+                  example: ชาย
+                Soi:
+                  description: ซอย
+                  type: string
+                  example: '1'
+                SubdistrctName:
+                  description: ตำบล
+                  type: string
+                  example: สายไหม
+                TitleName:
+                  description: คำนำหน้า
+                  type: string
+                  example: นาย
+                Type:
+                  description: new_patient(คนไข้ใหม่), old_patient(คนไข้เก่า)
+                  type: string
+                  example: new_patient
+                ZipCode:
+                  description: เลขไปรษณีย์
+                  type: string
+                  example: '50000'
+      responses:
+        '200':
+          description: ''
+  /api/Patient/GetHistories:
+    post:
+      summary: GetHistories(ขอข้อมูลเพิ่ม)
+      description: GetHistories(ขอข้อมูลเพิ่ม)
+      operationId: gethistories
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                PatientKey:
+                  type: string
+                  example: '37700'
+      responses:
+        '200':
+          description: ''
+  /api/PostPostponeAppointment:
+    post:
+      summary: PostPostponeAppointment
+      description: PostPostponeAppointment
+      operationId: postpostponeappointment
+      parameters:
+        - name: ''
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Description:
+                  description: รายละเอียดในการเลื่อนนัด
+                  type: string
+                  example: ขอเลื่อนนัด
+                PatientKey:
+                  description: เลขประจำตัวของคนไข้
+                  type: string
+                  example: '37700'
+      responses:
+        '200':
+          description: ''
+  /api/PostHealtRecodeForm:
+    post:
+      summary: PostHealtRecodeForm
+      description: PostHealtRecodeForm
+      operationId: posthealtrecodeform
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                BMI:
+                  description: ดัชนีมวลกาย
+                  type: string
+                  example: '300'
+                Breathing:
+                  description: การหายใจ
+                  type: string
+                  example: ปกติ
+                Chest:
+                  description: รอบอก
+                  type: string
+                  example: '80'
+                Exercise:
+                  description: ออกกำลังกาย
+                  type: string
+                  example: สัปดาห์ละ 5 วัน
+                FirstName:
+                  description: ชื่อ
+                  type: string
+                  example: ซอฟต์
+                Height:
+                  description: ส่วนสูง
+                  type: string
+                  example: '170'
+                LastName:
+                  description: นามสกุล
+                  type: string
+                  example: คอน
+                PatientKey:
+                  type: string
+                  example: '389715'
+                Sleep:
+                  description: การนอนหลับ
+                  type: string
+                  example: วันละ 8 ชั่วโมง
+                TitleName:
+                  description: คำนำหน้า
+                  type: string
+                  example: นาย
+                Vision:
+                  description: การมองเห็น
+                  type: string
+                  example: ปกติ
+                Waistline:
+                  description: รอบเอว
+                  type: string
+                  example: '80'
+                Weight:
+                  description: น้ำหนัก
+                  type: string
+                  example: '70'
+                age:
+                  description: อายุ
+                  type: string
+                  example: '40'
+      responses:
+        '200':
+          description: ''
+tags: []
